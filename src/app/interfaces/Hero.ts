@@ -10,5 +10,6 @@ export interface Hero {
   id: string;
   name: string;
   universe: number;
+  imageUrl: string;
   details: HeroDetails;
 }

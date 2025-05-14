@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import path from "path";
 import { promises as fs } from "fs";
-import type { Hero } from "@/app/interfaces/Hero";
+import type { Hero } from "../../interfaces/Hero";
 
 export async function GET(request: Request) {
   try {

@@ -1,26 +1,41 @@
 "use client";
-import { useEffect, useState } from "react";
-import type { Hero } from "@/app/interfaces/Hero";
-import { HeroesListProps } from "@/app/interfaces/HeroesListProps";
+import type { Hero } from "../../interfaces/Hero";
+import HeroPicture from "../HeroPicture/HeroPicture";
+import HeroDetails from "../HeroDetails/HeroDetails";
 
-export default function HeroesList({ heroes }: HeroesListProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface CarouselProps {
+  items: Hero[];
+}
 
-  if (!heroes || heroes.length === 0) {
-    return <p>Nenhum herói para exibir no carrossel.</p>;
+export default function Carousel({ items }: CarouselProps) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  };
+
+  if (!items || items.length === 0) {
+    return <p>Nenhum item para o carrossel.</p>;
   }
 
-  const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? heroes.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === heroes.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  return <div className="carousel-container"></div>;
+  return (
+    <div className="custom-carousel-wrapper">
+      <Slider {...settings}>
+        {items.map((hero) => (
+          <div
+            key={hero.id}
+            className="carousel-slide-item"
+            style={{ padding: "20px", textAlign: "center" }}
+          >
+            <h2>{hero.name}</h2>
+            <HeroPicture imageUrl={hero.imageUrl} altText={hero.name} />
+            <HeroDetails hero={hero} />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
 }

@@ -1,11 +1,11 @@
-@import "./variables.scss";
+@use "./variables.scss";
 
 :root {
   height: 100vh;
 
   &::before {
     content: "";
-    background: $background;
+    background: variables.$background;
     height: 100%;
     position: absolute;
     top: 0;
@@ -15,9 +15,9 @@
 
 body {
   position: relative;
-  color: $text-color;
+  color: variables.$text-color;
   margin: auto;
-  max-width: $max-width;
+  max-width: variables.$max-width;
   height: calc(100vh - 3.5rem);
   overflow: hidden;
 }
