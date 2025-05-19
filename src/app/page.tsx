@@ -1,35 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import HeroesList from "./components/HeroesList/HeroesList"; // Caminho para seu HeroesList existente
-import HeroGalleryGrid from "./components/HeroGalleryGrid/HeroGalleryGrid"; // Novo componente que vamos criar
-import type { Hero } from "../app/interfaces/Hero"; // Ajuste o caminho se necessário
+import HeroesList from "../app/components/HeroesList/HeroesList";
+import HeroGalleryGrid from "../app/components/HeroGalleryGrid/HeroGalleryGrid";
+import type { Hero } from "../app/interfaces/Hero";
 
-// Se você mantiver a função de fetch aqui, ela será chamada no cliente.
-// Alternativamente, os dados poderiam ser buscados por um Server Component pai e passados como prop.
 async function fetchHeroesData(): Promise<Hero[]> {
-  const apiUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const apiUrl = process.env.NEXT_PUBLIC_APP_URL || "";
   const response = await fetch(`${apiUrl}/api/getHeroes`, {
     cache: "no-store",
   });
+
   if (!response.ok) {
-    // Lançar um erro aqui fará com que o Error Boundary (se houver) seja ativado
-    // ou pode ser pego pelo catch no useEffect.
     const errorBody = await response.text();
-    console.error("API Error:", errorBody);
+    console.error(
+      "API Error fetching heroes:",
+      errorBody,
+      response.status,
+      response.statusText
+    );
     throw new Error(
-      `Falha ao buscar heróis. Status: ${response.status}. Response: ${errorBody}`
+      `Falha ao buscar heróis. Status: ${response.status}. Detalhes: ${errorBody}`
     );
   }
   return response.json();
 }
 
-export default function Home() {
+export default function HomePage() {
   const [heroesData, setHeroesData] = useState<Hero[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
-
-  const [viewMode, setViewMode] = useState<"gallery" | "carousel">("gallery"); // Estado para controlar a visualização
+  const [viewMode, setViewMode] = useState<"gallery" | "carousel">("gallery");
   const [initialCarouselIndex, setInitialCarouselIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Home() {
         const data = await fetchHeroesData();
         setHeroesData(data);
       } catch (e: any) {
-        console.error("Erro na busca de dados da página Home:", e);
+        console.error("Erro ao carregar dados na HomePage:", e);
         setFetchError(
           e.message || "Ocorreu um erro desconhecido ao carregar os heróis."
         );
@@ -62,9 +63,14 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <p style={{ textAlign: "center", padding: "50px" }}>
-        Carregando heróis...
-      </p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80vh",
+        }}
+      ></div>
     );
   }
 
@@ -80,7 +86,8 @@ export default function Home() {
   }
 
   return (
-    <main style={{ padding: "20px" }}>
+    <main className="page-content">
+      {" "}
       {viewMode === "gallery" ? (
         <>
           <HeroGalleryGrid
@@ -89,11 +96,10 @@ export default function Home() {
           />
         </>
       ) : (
-        // Passamos os heroes, o índice inicial e a função para voltar
         <HeroesList
           heroes={heroesData}
           initialIndex={initialCarouselIndex}
-          onReturnToGallery={handleReturnToGallery} // Nova prop
+          onReturnToGallery={handleReturnToGallery}
         />
       )}
     </main>

@@ -1,0 +1,106 @@
+.carouselContainer {
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  padding-top: 60px;
+  color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.returnButton {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 20;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.carouselViewport {
+  position: relative;
+}
+
+.heroDisplayArea {
+  width: 100%;
+  text-align: center;
+}
+
+.heroName {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.heroContentRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+  justify-content: center;
+}
+
+.heroPictureWrapper {
+  flex: 0 1 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.heroDetailsWrapper {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.heroDetailsWrapper ul li {
+  list-style-type: none;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &.prev {
+    left: 10px;
+  }
+
+  &.next {
+    right: 10px;
+  }
+}
+
+.message {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #aaa;
+}

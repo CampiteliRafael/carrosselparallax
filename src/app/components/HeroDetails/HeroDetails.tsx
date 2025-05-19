@@ -1,9 +1,6 @@
-// src/components/HeroDetails/HeroDetails.tsx
-import type { Hero } from "../../interfaces/Hero"; // Ajuste o caminho
-
+import type { Hero } from "../../interfaces/Hero";
 interface HeroDetailsProps {
-  hero: Hero; // Recebe o objeto Hero inteiro ou apenas a parte 'details'
-  // Se for só details: details: Hero['details'];
+  hero: Hero;
 }
 
 export default function HeroDetails({ hero }: HeroDetailsProps) {

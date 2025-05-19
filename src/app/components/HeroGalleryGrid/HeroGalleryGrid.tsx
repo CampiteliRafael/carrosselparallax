@@ -1,11 +1,11 @@
 "use client";
 
-import type { Hero } from "../../interfaces/Hero"; // Ajuste o caminho se necessário
-// import HeroPicture from '../HeroPicture/HeroPicture'; // Opcional, para mostrar a imagem
+import type { Hero } from "../../interfaces/Hero";
+import styles from "./HeroGalleryGrid.module.scss";
 
 interface HeroGalleryGridProps {
   heroes: Hero[];
-  onHeroSelect: (index: number) => void; // Função para chamar quando um herói é selecionado
+  onHeroSelect: (index: number) => void;
 }
 
 export default function HeroGalleryGrid({
@@ -13,45 +13,27 @@ export default function HeroGalleryGrid({
   onHeroSelect,
 }: HeroGalleryGridProps) {
   if (!heroes || heroes.length === 0) {
+    console.log("HeroGalleryGrid: Nenhum herói recebido ou array vazio.");
     return <p>Nenhum herói para mostrar na galeria.</p>;
   }
+  console.log("HeroGalleryGrid: Heróis recebidos para a galeria:", heroes);
 
   return (
-    <div
-      className="hero-gallery-grid"
-      style={{
-        display: "flex",
-        flexWrap: "wrap", // Para que os itens quebrem para a próxima linha se não couberem
-        gap: "20px", // Espaçamento entre os cartões
-        justifyContent: "center", // Centraliza os cartões se houver espaço extra na linha
-      }}
-    >
+    <div className={styles.grid}>
+      {" "}
       {heroes.map((hero, index) => (
         <div
           key={hero.id}
+          className={styles.item}
           onClick={() => onHeroSelect(index)}
-          style={{
-            cursor: "pointer",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "15px",
-            width: "180px", // Largura de cada "cartão" de herói
-            textAlign: "center",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-          }}
+          title={`Ver detalhes de ${hero.name}`}
         >
           <img
-            src={hero.imageUrl || "/images/placeholder.png"} // Use seu placeholder
+            src={hero.imageUrl || "/images/placeholder.png"}
             alt={hero.name}
-            style={{
-              width: "100%", // Imagem ocupa toda a largura do cartão
-              height: "150px", // Altura fixa para as imagens da galeria
-              objectFit: "cover", // ou 'contain'
-              borderRadius: "4px",
-              marginBottom: "10px",
-            }}
+            className={styles.image}
           />
-          <h3 style={{ fontSize: "1.1em", margin: "0" }}>{hero.name}</h3>
+          <p className={styles.name}>{hero.name}</p>
         </div>
       ))}
     </div>
