@@ -4,6 +4,7 @@
     "name": "Homem-Aranha",
     "universe": 616,
     "imageUrl": "/spiders/spider-man-616.png",
+    "imageBook": "/spiders/spider-man-616-comic-book.png",
     "details": {
       "fullName": "Peter B. Parker",
       "birthday": "1980-08-27",
@@ -17,6 +18,7 @@
     "name": "Mulher-Aranha",
     "universe": 65,
     "imageUrl": "/spiders/mulher-aranha-65.png",
+    "imageBook": "/spiders/mulher-aranha-65-comic-book.png",
     "details": {
       "fullName": "Gwen Stacy",
       "birthday": "2002-03-02",
@@ -30,6 +32,7 @@
     "name": "Homem-Aranha II",
     "universe": 1610,
     "imageUrl": "/spiders/spider-man-1610.png",
+    "imageBook": "/spiders/spider-man-1610-comic-book.png",
     "details": {
       "fullName": "Miles Morales",
       "birthday": "1999-08-3",
@@ -43,6 +46,7 @@
     "name": "SP-DR",
     "universe": 14512,
     "imageUrl": "/spiders/sp-dr-14512.png",
+    "imageBook": "/spiders/sp-dr-14512-comic-book.png",
     "details": {
       "fullName": "Peni Parker",
       "birthday": "2009-10-22",
@@ -56,6 +60,7 @@
     "name": "Porco-Aranha",
     "universe": 8311,
     "imageUrl": "/spiders/spider-ham-8311.png",
+    "imageBook": "/spiders/spider-ham-8311-comic-book.png",
     "details": {
       "fullName": "Peter Porker",
       "birthday": "2009-10-22",
@@ -69,6 +74,7 @@
     "name": "Homem-Aranha",
     "universe": 90214,
     "imageUrl": "/spiders/spider-man-90214.png",
+    "imageBook": "/spiders/spider-man-90214-comic-book.png",
     "details": {
       "fullName": "Peter Parker",
       "birthday": "1933-2-9",
@@ -82,6 +88,7 @@
     "name": "Homem-Aranha",
     "universe": 928,
     "imageUrl": "/spiders/spider-man-928.png",
+    "imageBook": "/spiders/spider-man-928-comic-book.png",
     "details": {
       "fullName": "Miguel O'hara",
       "birthday": "1970-05-11",

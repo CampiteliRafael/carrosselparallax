@@ -28,11 +28,7 @@ export default function HeroGalleryGrid({
           onClick={() => onHeroSelect(index)}
           title={`Ver detalhes de ${hero.name}`}
         >
-          <img
-            src={hero.imageUrl || "/images/placeholder.png"}
-            alt={hero.name}
-            className={styles.image}
-          />
+          <img src={hero.imageUrl} alt={hero.name} className={styles.image} />
           <p className={styles.name}>{hero.name}</p>
         </div>
       ))}

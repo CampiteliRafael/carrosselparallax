@@ -1,9 +1,12 @@
 import type { Hero } from "../../interfaces/Hero";
+import styles from "../HeroDetails/HeroDetails.module.scss";
 interface HeroDetailsProps {
   hero: Hero;
 }
 
 export default function HeroDetails({ hero }: HeroDetailsProps) {
+  console.log("HeroDetails (CLIENTE) - Dados do herói recebidos:", hero);
+  console.log("HeroDetails (CLIENTE) - hero.imageBook:", hero?.imageBook);
   return (
     <div className="hero-details">
       <p>
@@ -27,6 +30,7 @@ export default function HeroDetails({ hero }: HeroDetailsProps) {
           <strong>Peso:</strong> {hero.details.weight} kg
         </li>
       </ul>
+      <img className={styles.heroBook} src={hero.imageBook} />
     </div>
   );
 }
